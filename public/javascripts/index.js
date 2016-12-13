@@ -1,8 +1,10 @@
 $('document').ready(() => {
   console.log('ready')
 
-  function uploadToS3(file) {
-    
+  function uploadToS3(file, signedRequest, url) {
+    $.put(url, signedRequest, (data) => {
+      console.log('the file has been uploaded', data);
+    })
   }
 
   function getSignedRequest(files) {

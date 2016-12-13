@@ -23,7 +23,6 @@ app.get('/sign-s3', (req, res) => {
     ContentType: fileType,
     ACL: 'public-read'
   };
-  console.log(s3Params)
   s3.getSignedUrl('putObject', s3Params, (err, data) => {
     if (err) {
       console.log('error getting signed url: ', err);
