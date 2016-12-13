@@ -17,3 +17,6 @@ label{
   margin: 10px;
   display: block;
 }
+#submit {
+  background-color: red;
+}
