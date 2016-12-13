@@ -57,7 +57,6 @@ app.get('/batchList', (req, res) => {
 
 app.get('/batch/:name', (req, res) => {
   const batchName = req.params.name;
-  console.log(batchName)
   const batchListParams = {
     Bucket: S3_BUCKET,
     Prefix: batchName
@@ -67,11 +66,10 @@ app.get('/batch/:name', (req, res) => {
       console.log('error retrieving batch:', err);
       return res.end();
     }
-    console.log(data)
     res.render('batch', {
       data: data, 
       urlPath: `https://${S3_BUCKET}.s3.amazonaws.com/`,
-      title: batchName.slice(0, -1)
+      title: batchName
     });
   })
 });

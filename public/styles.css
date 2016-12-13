@@ -1,5 +1,10 @@
 body {
-
+  background-color: #aaa;
+  font-family: helvetica;
+}
+label{
+  font-size: .8em;
+  font-weight: bold
 }
 .photo-img {
   height: 350px;
@@ -7,4 +12,8 @@ body {
 }
 .home-link {
   float: right;
+}
+.batch-link {
+  margin: 10px;
+  display: block;
 }

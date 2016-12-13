@@ -10,7 +10,7 @@ $('document').ready(() => {
     });
   }
 
-  function uploadToS3(file, signedRequest) {
+  function uploadToS3(file, signedRequest, callback) {
     $.ajax({
       method: 'PUT',
       url: signedRequest, 
@@ -18,22 +18,33 @@ $('document').ready(() => {
       processData: false,
       data: file,
       success: (data) => {
-        console.log('the file has been uploaded', data);
+        console.log('the file has been uploaded');
+        callback(true);
       },
       error: (err) => {
-        console.log('there was an error uploading:', data);
+        console.log('there was an error uploading:', err);
+        callback(false);
       }
     });
   }
 
   function getSignedRequest(files, batchName) {
-    let urls = [];
+    let count = 0;
     const batchFolder = `${batchName}/`;
     for (let file of files) {
       $.get( `/sign-s3?file-name=${batchFolder}${file.name}&file-type=${file.type}`, (data) => {
         if (data) {
-          uploadToS3(file, data.signedRequest);
-          urls.push(data.url);
+          uploadToS3(file, data.signedRequest, (success) => {
+            if (!success) {
+              alert('There was a problem uploading. Please check and try again');
+              return;
+            }
+            count++;
+            if (count === files.length) {
+              location.reload();
+              alert('your photos have been uploaded');
+            }
+          });
         } else {
           console.log('could not get signed url')
         }
@@ -45,7 +56,6 @@ $('document').ready(() => {
     event.preventDefault();
     const files = $('#files').prop('files');
     const batchName = $('#batch-name').val();
-    console.log('files:', files, 'batch-name:', batchName)
     if (files.length === 0) {
       alert('Uh oh~ No files were selected!');
       return;
