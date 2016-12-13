@@ -1,0 +1,27 @@
+{
+  "name": "family-photo-share",
+  "version": "1.0.0",
+  "description": "photo sharing app for family",
+  "engines": {
+    "node": "7.0.0"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bkilrain/FamilyPhotoShare.git"
+  },
+  "author": "Brian Kilrain <bkilrain@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bkilrain/FamilyPhotoShare/issues"
+  },
+  "homepage": "https://github.com/bkilrain/FamilyPhotoShare#readme",
+  "dependencies": {
+    "aws-sdk": "^2.7.13",
+    "ejs": "^2.5.5",
+    "express": "^4.14.0"
+  }
+}
