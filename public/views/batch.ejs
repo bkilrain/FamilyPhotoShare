@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Family Photo Share</title>
+  <link rel="stylesheet" href="/styles.css" type="text/css">
+  </head>
+  <body>
+  <a class="home-link" href="/">Take me back home!</a>
+    <h1 class="title"><%= title %></h1>
+    <h4>(click on a photo to download it... or click 'Download All' below)</h4>
+    <div id="photos">
+      <% data.Contents.forEach( (photo) => { %>
+        <a class="download-link" href="<%= urlPath + photo.Key %>" download><img src="<%= urlPath + photo.Key %>" class="photo-img"/></a>
+     <% }); %>
+    </div>
+
+    <input type="button" id="download-all" value="Download All Photos">
+  
+  <script
+    src="https://code.jquery.com/jquery-3.1.1.min.js"
+    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+    crossorigin="anonymous">
+  </script>
+  <script src="/javascripts/batch.js"></script>
+  </body>
+</html>

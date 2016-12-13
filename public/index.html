@@ -10,10 +10,14 @@
     <h3>click upload or choose a batch</h3>
 
     <form id="file-input">
-      <p id="status">Please select file(s)</p>
-      <input type="file" id="files" multiple>
+      <input type="text" placeholder="Batch Name" id="batch-name" name="batch" required>
+      <label name="batch">Please enter the name for your batch of photos</label>
+      <input type="file" id="files" name="file" multiple>
+      <label name="file">Please select file(s)</label>
       <input type="submit">
     </form>
+
+    <div id="batch-list"></div>
   
   <script
     src="https://code.jquery.com/jquery-3.1.1.min.js"
