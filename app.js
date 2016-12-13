@@ -3,7 +3,7 @@ const aws = require('aws-sdk');
 
 const app = express();
 const port = process.env.PORT || 3000;
-const bucket = process.env.S3_BUCKET;
+const S3_BUCKET = process.env.S3_BUCKET;
 
 app.use(express.static('./public'));
 
@@ -23,7 +23,7 @@ app.get('/sign-s3', (req, res) => {
     ContentType: fileType,
     ACL: 'public-read'
   };
-
+  console.log(s3Params)
   s3.getSignedUrl('putObject', s3Params, (err, data) => {
     if (err) {
       console.log('error getting signed url: ', err);
