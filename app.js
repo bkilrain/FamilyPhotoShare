@@ -21,6 +21,10 @@ app.on('stormpath.ready', () => {
 
 const s3 = new aws.S3();
 
+app.get('/', stormpath.loginRequired, (req, res) => {
+  res.send();
+})
+
 app.get('/sign-s3', stormpath.loginRequired, (req, res) => {
   const fileName = req.query['file-name'];
   const fileType = req.query['file-type'];
