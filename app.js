@@ -1,19 +1,23 @@
 const express = require('express');
 const aws = require('aws-sdk');
 const path = require('path');
+const stormpath = require('express-stormpath');
 
 const app = express();
 const port = process.env.PORT || 3000;
 const S3_BUCKET = process.env.S3_BUCKET;
 
 app.use('/', express.static(path.join(__dirname, '/public')));
+app.use(stormpath.init(app, { website: true }));
 
 app.set('views', './public/views');
 app.set('view engine', 'ejs');
 // app.engine('ejs', require('ejs').renderFile);
 
-app.listen(port);
-console.log('listening on port', port);
+app.on('stormpath.ready', () => {
+  app.listen(port);
+  console.log('listening on port', port);
+})
 
 const s3 = new aws.S3();
 
