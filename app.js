@@ -22,7 +22,7 @@ app.on('stormpath.ready', () => {
 const s3 = new aws.S3();
 
 app.get('/', stormpath.loginRequired, (req, res) => {
-  res.send();
+  res.redirect('/login');
 })
 
 app.get('/sign-s3', stormpath.loginRequired, (req, res) => {
