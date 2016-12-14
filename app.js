@@ -8,19 +8,19 @@ const port = process.env.PORT || 3000;
 const S3_BUCKET = process.env.S3_BUCKET;
 
 app.use(express.static(path.join(__dirname, '/public')));
-app.use(stormpath.init(app, { website: true }));
+// app.use(stormpath.init(app, { website: true }));
 
 app.set('views', './public/views');
 app.set('view engine', 'ejs');
 
-app.on('stormpath.ready', () => {
+// app.on('stormpath.ready', () => {
   app.listen(port);
   console.log('listening on port', port);
-})
+// })
 
 const s3 = new aws.S3();
 
-app.get('/sign-s3', stormpath.loginRequired, (req, res) => {
+app.get('/sign-s3', (req, res) => {
   const fileName = req.query['file-name'];
   const fileType = req.query['file-type'];
   const s3Params = {
@@ -58,7 +58,7 @@ app.get('/batchList', (req, res) => {
 
 });
 
-app.get('/batch/:name', stormpath.loginRequired, (req, res) => {
+app.get('/batch/:name', (req, res) => {
   const batchName = req.params.name;
   const batchListParams = {
     Bucket: S3_BUCKET,
