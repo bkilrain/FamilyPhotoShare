@@ -48,7 +48,7 @@ app.get('/sign-s3', stormpath.loginRequired, (req, res) => {
   });
 });
 
-app.get('/batchList', stormpath.loginRequired, (req, res) => {
+app.get('/batchList', (req, res) => {
   const batchListParams = {
     Bucket: S3_BUCKET,
     Delimiter: '/'
