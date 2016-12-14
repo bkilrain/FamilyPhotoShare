@@ -12,7 +12,6 @@ app.use(stormpath.init(app, { website: true }));
 
 app.set('views', './public/views');
 app.set('view engine', 'ejs');
-// app.engine('ejs', require('ejs').renderFile);
 
 app.on('stormpath.ready', () => {
   app.listen(port);
@@ -20,10 +19,6 @@ app.on('stormpath.ready', () => {
 })
 
 const s3 = new aws.S3();
-
-app.get('/', (req, res) => {
-  res.redirect('/login');
-})
 
 app.get('/sign-s3', stormpath.loginRequired, (req, res) => {
   const fileName = req.query['file-name'];
