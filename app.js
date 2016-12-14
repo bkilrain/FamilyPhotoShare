@@ -21,7 +21,7 @@ app.on('stormpath.ready', () => {
 
 const s3 = new aws.S3();
 
-app.get('/sign-s3', (req, res) => {
+app.get('/sign-s3', stormpath.loginRequired, (req, res) => {
   const fileName = req.query['file-name'];
   const fileType = req.query['file-type'];
   const s3Params = {
@@ -44,7 +44,7 @@ app.get('/sign-s3', (req, res) => {
   });
 });
 
-app.get('/batchList', (req, res) => {
+app.get('/batchList', stormpath.loginRequired, (req, res) => {
   const batchListParams = {
     Bucket: S3_BUCKET,
     Delimiter: '/'
@@ -59,7 +59,7 @@ app.get('/batchList', (req, res) => {
 
 });
 
-app.get('/batch/:name', (req, res) => {
+app.get('/batch/:name', stormpath.loginRequired, (req, res) => {
   const batchName = req.params.name;
   const batchListParams = {
     Bucket: S3_BUCKET,
