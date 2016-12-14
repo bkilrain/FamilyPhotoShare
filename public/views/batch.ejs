@@ -8,8 +8,8 @@
   <body>
   <a class="home-link" href="/">Take me back home!</a>
     <h1 class="title"><%= title %></h1>
-    <h4>For Chrome Users: click on a photo to download it... or click 'Download All' below</h4><br>
-    <h4>For other browsers: right click photos to download... or use Chrome!</h4><br>
+    <h4>For Chrome Users: click on a photo to download it... or click 'Download All' below</h4>
+    <h4>For other browsers: right click photos to download... or just use Chrome dammit!</h4><br>
     <div id="photos">
       <% data.Contents.forEach( (photo) => { %>
         <a class="download-link" href="<%= urlPath + photo.Key %>" download><img src="<%= urlPath + photo.Key %>" class="photo-img"/></a>
