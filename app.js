@@ -21,7 +21,7 @@ app.on('stormpath.ready', () => {
 
 const s3 = new aws.S3();
 
-app.get('/', stormpath.loginRequired, (req, res) => {
+app.get('/', (req, res) => {
   res.redirect('/login');
 })
 
