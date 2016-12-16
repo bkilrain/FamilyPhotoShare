@@ -16,8 +16,31 @@
       <label name="file">Please select file(s)</label><br>
       <input id="submit" type="submit">
     </form>
+    <div class="loading hidden">
+      <div class="loader"></div>
+      <p>uploading photos...</p>
+      <p>remaining: <span id="to-upload">...</span></p>
+    </div>
     <hr />
     <div id="batch-list"></div>
+
+    <div class="sidebar">
+      <p>Welcome to my crappy little website. When choosing </p>
+      <p>photos to upload or download, the quality has not</p>
+      <p>been lowered at all. This means it might take a long</p>
+      <p>time to do stuff. Patience is a virtue... Mother.</p>
+      <h4>Things:</h4>
+      <ul>
+        <li>If you want to select multiple photos you can:</li>
+          <ul>
+            <li>On Mobile: long press the first photo you select... then select normally</li>
+            <li>On laptop: hold shift or control or command as you click all your photos</li>
+          </ul>
+        <li>If you get an alert that there was a problem uploading, check the batch to see what files didn't upload... you can try again and enter the same name to append the photos that didn't make it.</li>
+        <li>If you want to share a batch, share the the url from the address bar.</li>
+        <li>If you have a problem or a suggestion or praise... send me an email: firstInitial.lastName at gmail. I'd like to polish this up so it's easy to use and it works well. Tell me what sucks so I can get better at not making sucky things.
+      </ul>
+    </div>
   
   <script
     src="https://code.jquery.com/jquery-3.1.1.min.js"

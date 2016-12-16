@@ -40,8 +40,10 @@ $('document').ready(() => {
               return;
             }
             count++;
+            $('#to-upload').text(files.length - count);
             if (count === files.length) {
               location.reload();
+              $('.loading').addClass('hidden');
               alert('your photos have been uploaded');
             }
           });
@@ -61,6 +63,7 @@ $('document').ready(() => {
       return;
     }
     getSignedRequest(files, batchName);
+    $('.loading').removeClass('hidden');
   });
 
   updateBatchList();
