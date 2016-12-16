@@ -56,6 +56,7 @@ $('document').ready(() => {
 
   $('#file-input').on('submit', (event) => {
     event.preventDefault();
+    alert('submit')
     const files = $('#files').prop('files');
     const batchName = $('#batch-name').val();
     if (files.length === 0) {
@@ -67,7 +68,7 @@ $('document').ready(() => {
   });
 
   function chk(e){
-
+    alert('chk')
     if (!$("form").valid()) 
         return false;   
 
