@@ -54,20 +54,8 @@ $('document').ready(() => {
     }
   }
 
-  // $('#file-input').on('submit', (event) => {
-  //   event.preventDefault();
-  //   const files = $('#files').prop('files');
-  //   const batchName = $('#batch-name').val();
-  //   if (files.length === 0) {
-  //     alert('Uh oh~ No files were selected!');
-  //     return;
-  //   }
-  //   getSignedRequest(files, batchName);
-  //   $('.loading').removeClass('hidden');
-  // });
-
-  $('#submit').on('touchend', (event) => {
-    // event.preventDefault();
+  $('#file-input').on('submit', (event) => {
+    event.preventDefault();
     const files = $('#files').prop('files');
     const batchName = $('#batch-name').val();
     if (files.length === 0) {
@@ -77,6 +65,23 @@ $('document').ready(() => {
     getSignedRequest(files, batchName);
     $('.loading').removeClass('hidden');
   });
+
+  function chk(e){
+
+    if (!$("form").valid()) 
+        return false;   
+
+       const files = $('#files').prop('files');
+    const batchName = $('#batch-name').val();
+    if (files.length === 0) {
+      alert('Uh oh~ No files were selected!');
+      return;
+    }
+    getSignedRequest(files, batchName);
+    $('.loading').removeClass('hidden');
+
+    return false;
+}
 
   updateBatchList();
 });
