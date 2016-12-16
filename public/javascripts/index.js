@@ -31,10 +31,10 @@ $('document').ready(() => {
   function getSignedRequest(files, batchName) {
     let count = 0;
     const batchFolder = `${batchName}/`;
-    for (let file of files) {
-      $.get( `/sign-s3?file-name=${batchFolder}${file.name}&file-type=${file.type}`, (data) => {
+    for (let i = 0; i < files.length; i++) {
+      $.get( `/sign-s3?file-name=${batchFolder}${files[i].name}&file-type=${files[i].type}`, (data) => {
         if (data) {
-          uploadToS3(file, data.signedRequest, (success) => {
+          uploadToS3(files[i], data.signedRequest, (success) => {
             if (!success) {
               alert('There was a problem uploading. Please check and try again');
               return;
@@ -56,7 +56,6 @@ $('document').ready(() => {
 
   $('#file-input').on('submit', (event) => {
     event.preventDefault();
-    alert('submit')
     const files = $('#files').prop('files');
     const batchName = $('#batch-name').val();
     if (files.length === 0) {
@@ -67,22 +66,6 @@ $('document').ready(() => {
     $('.loading').removeClass('hidden');
   });
 
-  function chk(e){
-    alert('chk')
-    if (!$("form").valid()) 
-        return false;   
-
-       const files = $('#files').prop('files');
-    const batchName = $('#batch-name').val();
-    if (files.length === 0) {
-      alert('Uh oh~ No files were selected!');
-      return;
-    }
-    getSignedRequest(files, batchName);
-    $('.loading').removeClass('hidden');
-
-    return false;
-}
 
   updateBatchList();
 });

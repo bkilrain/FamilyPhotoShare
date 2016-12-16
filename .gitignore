@@ -38,3 +38,6 @@ jspm_packages
 
 # heroku env 
 .env
+
+# babel output
+public/transpiled
