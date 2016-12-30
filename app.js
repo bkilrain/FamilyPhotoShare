@@ -7,6 +7,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 const S3_BUCKET = process.env.S3_BUCKET;
 
+
 app.use(express.static(path.join(__dirname, '/public')));
 app.use(stormpath.init(app, { website: true }));
 
