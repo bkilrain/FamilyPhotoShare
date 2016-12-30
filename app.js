@@ -16,7 +16,7 @@ app.set('view engine', 'ejs');
 app.on('stormpath.ready', () => {
   app.listen(port);
   console.log('listening on port', port);
-// })
+})
 
 const s3 = new aws.S3();
 
